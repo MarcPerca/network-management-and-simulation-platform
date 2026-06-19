@@ -1,0 +1,48 @@
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.user
+*.suo
+
+# .NET
+bin/
+obj/
+TestResults/
+*.nupkg
+
+# Node / React
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+*.csproj
+*.sln
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# SQL Server local files
+*.mdf
+*.ldf
+
+# Local artifacts
+*.zip

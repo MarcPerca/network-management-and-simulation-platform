@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Network Management and Simulation Platform</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <aside>
+        <strong>Network Management and Simulation Platform</strong>
+        <button class="nav active" data-view="dashboardView">Dashboard</button>
+        <button class="nav" data-view="topologiesView">Topologies</button>
+        <button class="nav" data-view="devicesView">Devices</button>
+        <button class="nav" data-view="metricsView">Metrics</button>
+      </aside>
+
+      <section class="content">
+        <header>
+          <div>
+            <h1 id="pageTitle">Corporate Lab</h1>
+            <p id="pageSubtitle">Professional network simulator with editable topology and Unity-ready data</p>
+          </div>
+          <button class="primary" id="saveTopology">Save topology</button>
+        </header>
+
+        <section class="view active" id="dashboardView">
+          <div class="cards">
+            <article><span>Availability</span><b id="availabilityMetric">96.8%</b></article>
+            <article><span>Devices</span><b id="deviceMetric">5</b></article>
+            <article><span>Links</span><b id="linkMetric">4</b></article>
+            <article><span>Traffic</span><b>842 Mbps</b></article>
+          </div>
+
+          <div class="editor-bar" aria-label="Topology tools">
+            <select id="deviceType" aria-label="Device type">
+              <option value="router">Router</option>
+              <option value="switch">Switch</option>
+              <option value="server">Server</option>
+              <option value="pc">PC</option>
+              <option value="printer">Printer</option>
+            </select>
+            <button id="addDevice">Add device</button>
+            <button id="connectMode">Connect</button>
+            <button id="deleteSelected">Delete</button>
+            <button id="resetTopology">Reset demo</button>
+            <span id="editorStatus">Drag devices to reorganize the lab.</span>
+          </div>
+
+          <div class="workspace">
+            <div class="topology" id="topologyCanvas" aria-label="Editable network topology">
+              <svg class="links-layer" id="linksLayer" aria-hidden="true"></svg>
+              <div class="empty-state" id="emptyState">Add a device to start building a topology.</div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <h2>Inventory</h2>
+                <span id="selectedLabel">No selection</span>
+              </div>
+              <div id="inventory"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="topologiesView">
+          <div class="section-grid">
+            <div class="panel wide">
+              <div class="panel-head">
+                <h2>Saved Topologies</h2>
+                <button class="compact" id="createTopology">Create New</button>
+              </div>
+              <div id="topologyList" class="list-table"></div>
+            </div>
+            <form class="panel detail-panel edit-form" id="topologyForm">
+              <h2>Topology Details</h2>
+              <p class="muted">Load a topology to edit its devices and connections in the dashboard.</p>
+              <label>Name<input id="topologyName" type="text" autocomplete="off" /></label>
+              <label>Description<input id="topologyDescription" type="text" autocomplete="off" /></label>
+              <button class="primary" type="submit">Save details</button>
+              <dl id="topologyDetails"></dl>
+            </form>
+          </div>
+        </section>
+
+        <section class="view" id="devicesView">
+          <div class="section-grid devices-grid">
+            <div class="panel wide">
+              <div class="panel-head">
+                <h2>Device Inventory</h2>
+                <span id="deviceCountLabel">0 devices</span>
+              </div>
+              <div class="device-table" id="deviceTable"></div>
+            </div>
+
+            <form class="panel edit-form" id="deviceForm">
+              <h2>Edit Device</h2>
+              <label>Name<input id="editName" type="text" autocomplete="off" /></label>
+              <label>IP address<input id="editIp" type="text" autocomplete="off" /></label>
+              <label>Status
+                <select id="editStatus">
+                  <option>Online</option>
+                  <option>Warning</option>
+                  <option>Offline</option>
+                </select>
+              </label>
+              <button class="primary" type="submit">Save changes</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="view" id="metricsView">
+          <div class="cards metrics-cards">
+            <article><span>Online devices</span><b id="onlineDevicesMetric">0</b></article>
+            <article><span>Warning devices</span><b id="warningDevicesMetric">0</b></article>
+            <article><span>Offline devices</span><b id="offlineDevicesMetric">0</b></article>
+            <article><span>Average latency</span><b>4.2 ms</b></article>
+          </div>
+          <div class="panel">
+            <h2>Network Health</h2>
+            <div class="health-bars" id="healthBars"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
