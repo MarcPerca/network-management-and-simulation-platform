@@ -1,87 +1,77 @@
 # Network Management and Simulation Platform
 
-Network Management and Simulation Platform is a professional network management and simulation project built to demonstrate C#, ASP.NET Core, SQL Server, React, JavaScript, and Unity in one coherent portfolio project.
+A web-based platform for managing virtual network topologies, device inventories, operational status, and network connections.
 
-The application focuses on managing virtual network topologies: users can create saved networks, add devices, edit inventory data, connect nodes, inspect operational status, and prepare topology data for future 3D visualization in Unity.
+The project presents a business-style network management tool where users can create and manage network environments such as corporate labs, branch offices, factories, or datacenters. It includes an interactive topology editor, editable device data, saved network layouts, and a technical foundation prepared for a future ASP.NET Core, SQL Server, React, and Unity architecture.
 
-## Current Version
+## Features
 
-The browser prototype is already functional and can be opened without installing dependencies:
+- Interactive dashboard with network status metrics.
+- Multiple saved topologies: Corporate Lab, Factory Network, Branch Office, and Datacenter.
+- Device inventory with name, type, IP address, and status.
+- Editable devices, including name, IP address, and online/warning/offline status.
+- Editable topology name and description.
+- Drag-and-drop network topology editor.
+- Device creation for routers, switches, servers, PCs, and printers.
+- Visual connections between network devices.
+- Local data persistence in the browser.
+- Planned backend persistence with ASP.NET Core and SQL Server.
+- Planned Unity module for 3D network visualization.
+
+## Technologies
+
+- HTML
+- CSS
+- JavaScript
+- React
+- C#
+- ASP.NET Core
+- Entity Framework Core
+- SQL Server
+- Unity
+
+## Project Structure
+
+```text
+NetSimPro/
+  backend/NetSimPro.Api/       ASP.NET Core REST API foundation
+  frontend/                    React dashboard foundation
+  prototype/                   Functional browser prototype
+  sql/                         SQL Server schema
+  unity/Assets/Scripts/        Unity C# scripts for 3D topology rendering
+  docs/                        Architecture, API contract, and roadmap
+```
+
+## Current Status
+
+The functional prototype is available in:
 
 ```text
 prototype/index.html
 ```
 
-Current prototype features:
+It currently runs directly in the browser and stores changes locally. The prototype demonstrates the main product experience before moving the data layer to a real backend and database.
 
-- Dashboard with network health metrics.
-- Saved topologies: Corporate Lab, Factory Network, Branch Office, and Datacenter.
-- Create, load, delete, and edit topologies.
-- Device inventory with name, type, status, and IP address.
-- Editable device name, IP address, and status.
-- Drag-and-drop topology editor.
-- Add routers, switches, servers, PCs, and printers.
-- Create visual connections between devices.
-- Local persistence using browser localStorage.
+## Planned Architecture
 
-## Target Architecture
+The intended full version uses a React frontend connected to an ASP.NET Core REST API. SQL Server stores users, networks, devices, links, and metrics. Unity is planned as an optional visualization module that can load topology snapshots from the API and render them in a 3D lab environment.
 
-```text
-NetSimPro/
-  backend/NetSimPro.Api/       ASP.NET Core REST API in C#
-  frontend/                    React management dashboard
-  unity/Assets/Scripts/        Optional Unity 3D visualization module
-  sql/                         SQL Server schema and seed data
-  docs/                        Architecture, API contract, and roadmap
-  prototype/                   Functional browser prototype
+```mermaid
+flowchart LR
+  React["React Dashboard"] --> Api["ASP.NET Core API"]
+  Api --> Sql["SQL Server"]
+  Unity["Unity 3D Module"] --> Api
 ```
 
-## Core Product Scope
+## Roadmap
 
-- Network topology management.
-- Device inventory management.
-- IP address and device status tracking.
-- Saved network projects.
-- Link/connection visualization.
-- Operational dashboard and metrics.
-- SQL Server persistence through an ASP.NET Core API.
-- React frontend connected to API endpoints.
-- Optional Unity module for 3D lab visualization.
+- Replace browser localStorage with ASP.NET Core API persistence.
+- Store networks, devices, links, and metrics in SQL Server.
+- Connect the React dashboard to backend endpoints.
+- Add authentication and user-owned networks.
+- Add historical metrics and reporting views.
+- Add Unity-based 3D visualization for saved topologies.
 
-## Recommended Development Order
+## Purpose
 
-1. Finalize the functional browser prototype.
-2. Build the ASP.NET Core REST API.
-3. Move persistence from localStorage to SQL Server.
-4. Connect the React dashboard to the API.
-5. Add authentication and user-owned networks.
-6. Export topology snapshots for Unity.
-7. Build the Unity 3D visualization module.
-
-## Local Development Notes
-
-To run the full target stack on a development machine, install:
-
-- .NET SDK 8 or later
-- Node.js 20 or later
-- SQL Server Developer Edition or SQL Server Express
-- Unity 2022 LTS or later
-
-Backend:
-
-```powershell
-cd backend/NetSimPro.Api
-dotnet restore
-dotnet ef database update
-dotnet run
-```
-
-Frontend:
-
-```powershell
-cd frontend
-npm install
-npm run dev
-```
-
-For the current functional prototype, open `prototype/index.html` directly in a browser.
+This project brings together frontend development, backend API design, database modeling, and 3D visualization around one coherent technical product: a network management and simulation platform.
